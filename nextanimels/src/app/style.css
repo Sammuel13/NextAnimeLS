@@ -1,0 +1,364 @@
+* {
+	padding: 0;
+	margin: 0;
+  box-sizing: border-box;
+}
+
+/* variaveis */
+
+:root{
+	--pink: #EB95E7;
+	--purple: #9793F5;
+	--yellow: #F3E792;
+	--blue: #96EBE2;
+	--white: #e1e7f5;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "header"
+    "main"  
+    "footer"
+  ;
+  background-image: linear-gradient(to bottom right, var(--pink), var(--purple));
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10%;
+  margin-bottom: 32px;
+  background-color: var(--white);
+	box-shadow: 0px 5px 10px #6462A385;
+  max-height: 130px;
+}
+
+.logo {
+  object-fit: cover;
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+}
+
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 450px;
+  justify-items: center;
+}
+
+.card {
+  position: relative;
+  text-align: center;
+	z-index: 1;
+  height: 450px;
+  background-color: transparent;
+  border: none;
+}
+
+.card h2 {
+  color: #333;
+  width: 250px;
+  margin: auto;
+}
+
+.card .aniNome {
+  margin-top: 20px;
+}
+
+.card img {
+  width: 250px;
+  height: 350px;
+  border-radius: 8px;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.card:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.card::before {
+  content: "Novo";
+  position: absolute;
+  z-index: 2;
+  padding: 8px;
+  background: var(--yellow);
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 700;
+  left: -5px;
+  top: -5px;
+  text-transform: uppercase;
+}
+
+.aniEps {
+  background: var(--blue);
+  font-size: 15px;
+  padding: 5px 16px;
+  position: absolute;
+  bottom: 90px;
+  left: -5px;
+  font-weight: 300;
+  border-top-right-radius: 8px;
+}
+
+.aniPlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.aniPlay i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:link, a:visited {
+	color: black;
+}
+
+.poster {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+footer {
+  margin-top: 20px;
+  padding: 0px 48px;
+  grid-area: footer;
+	text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 2rem;
+}
+
+footer nav {
+	display: flex;
+	justify-content: space-between;
+}
+
+.social {
+  margin: auto;
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.social a {
+  font-size: 1.5rem;
+}
+
+.poster {
+  grid-area: main;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-areas:
+    ". .  title title ."
+		". image synopsis synopsis ."
+    ". estrela synopsis synopsis ."
+		". infos synopsis synopsis ."
+	  ". infos synopsis synopsis ."
+		". infos trailer trailer .";
+  margin-bottom: 2rem;
+}
+
+#anime-title {
+  grid-area: title;
+  margin: auto;
+  writing-mode: horizontal-tb;
+  text-align: center;
+  padding: 5px 41px;
+  color: #333;
+  font-size: 18px;
+  background-color: #e1e7f5;
+  border-style: solid;
+  border-bottom-color: #337ab7;
+  border-left-color: #ebebeb;
+  border-right-color: #ebebeb;
+  border-top-color: #ebebeb;
+}
+
+#image {
+	grid-area: image;
+  width: 100%;
+}
+
+#image img { 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#estrela {
+  margin: 4px 0;
+  grid-area: estrela;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#estrela i {
+  font-size: 2.5rem;
+  color: yellow;
+}
+
+#estrela i:last-child {
+  color: white; 
+}
+
+#synopsis {
+  grid-area: synopsis;
+  color: #333;
+  background-color: #e1e7f5;
+  border-bottom-color: #337ab7;
+  border-left-color: #ebebeb;
+  border-right-color: #ebebeb;
+  border-style: solid;
+  border-top-color: #ebebeb;
+  padding: 9px;
+  text-align: left;
+}
+
+#synopsis h2 {
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+#synopsis p {
+  font-size: 15px;
+  text-align: justify;
+  text-indent: 16px;
+  margin-bottom: 10px;
+  line-height: 150%;
+}
+
+#infos {
+	grid-area: infos;
+  font-size: 11px;
+  color: #333;
+  background-color: #e1e7f5;
+  border-style: solid;
+  border-bottom-color: #337ab7;
+  border-left-color: #ebebeb;
+  border-right-color: #ebebeb;
+  border-top-color: #ebebeb;
+  padding: 9px;
+  text-align: left;
+}
+
+#trailer {
+	grid-area: trailer;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #estrela i {
+    font-size: 1.5rem;
+  }
+
+  .poster {
+    grid-template-columns: repeat(7, 1fr);
+	  grid-template-areas:
+      ". title title title title title ."
+  		". image image synopsis synopsis synopsis ."
+      ". estrela estrela synopsis synopsis synopsis ."
+  		". infos infos synopsis synopsis synopsis ."
+  	  ". infos infos synopsis synopsis synopsis ."
+  		". infos infos trailer trailer trailer .";
+    }
+}
+
+.corpo{
+  display: flex;
+  justify-content: center;
+}
+
+form {
+	max-width: 1000px;
+}
+
+.formulario{
+	background-color: var(--white);
+	box-shadow: 0px 5px 10px #6462A385;
+  padding: 20px;
+}
+
+.tipo #ova, #movie, #tv{
+	padding: 10px; 
+}
+
+label{
+  display:block;
+}
+
+
+.botao-form{
+  background-color: var(--pink);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+@media (max-width: 390px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  footer nav {
+	  flex-direction: column;
+    gap: 1rem;
+  }
+
+  .social {
+    width: 60%;
+  }
+  
+  #estrela i {
+    font-size: 1rem;
+  }
+
+  .poster {
+  	grid-template-columns: repeat(3, 1fr);
+  	grid-template-areas:
+      "title title title"
+  		"image synopsis synopsis"
+      "estrela synopsis synopsis"
+  		"infos synopsis synopsis"
+  	  "infos synopsis synopsis"
+  		"infos synopsis synopsis"
+      "trailer trailer trailer";
+  }
+}
