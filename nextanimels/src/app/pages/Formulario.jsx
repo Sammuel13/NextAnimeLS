@@ -1,9 +1,9 @@
 'use client';
 
-import styles from './page.module.css';
-import './style.css';
+import styles from '../page.module.css';
+import '../style.css';
 
-import { Header, Footer } from './components';
+import { Header, Footer } from '../components';
 
 export default function Form() {
 

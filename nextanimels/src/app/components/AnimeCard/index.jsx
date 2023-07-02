@@ -1,15 +1,15 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from 'react-router-dom'
 
 export default function AnimeCard({ name, temp, image, link, titleName }) {
 
     return (
         <div className="card">
             <Link
-                href={link}
+                to={link}
                 title={titleName}
             >
-                <Image src={"/"+image} alt={titleName} width={255} height={316}/>
+                <Image src={"/"+image} alt={titleName} width={250} height={350}/>
                 <div className="aniEps">{temp}</div>
                 <div className="aniPlay">
                     <i className="fa-solid fa-circle-play"> </i>
