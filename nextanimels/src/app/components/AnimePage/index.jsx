@@ -1,24 +1,24 @@
 'use client';
 
-import styles from '../page.module.css';
-import '../style.css';
+import styles from '../../page.module.css';
+import '../../style.css';
 
 import Image from 'next/image'
 
-import { Header, Footer } from '../components';
+import { Header, Footer } from '..';
 
-export default function AnimePage() {
+export default function AnimePage({ anime }) {
 
     return (
         <main className={styles.main}>
             <Header />
                 <div className="poster">
                 <div id="anime-title">
-                    <h1>Boku no Hero Academia 6th Season</h1>
-                    <h2>僕のヒーローアカデミア 6th Season</h2>
+                    <h1>{anime.title}</h1>
+                    <h2>{anime.synonyms[0]}</h2>
                 </div>
                 <div id="image">
-                    <Image src={"/"+image} alt={titleName} width={257} height={367} />
+                    <Image src={anime.picture} alt={anime.title} width={257} height={367} />
                 </div>
                 <div id="estrela">
                     <i className="fa-solid fa-star" />
@@ -46,9 +46,9 @@ export default function AnimePage() {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr><td><b>Type:</b> TV</td></tr>
-                    <tr><td><b>Episodes:</b> 25</td></tr>
-                    <tr><td><b>Status:</b> Currently Airing</td></tr>
+                    <tr><td><b>Type:</b> {anime.type}</td></tr>
+                    <tr><td><b>Episodes:</b> {anime.episodes}</td></tr>
+                    <tr><td><b>Status:</b> {anime.status}</td></tr>
                     <tr><td><b>Broadcast:</b> Saturdays at 17:30 (JST)</td></tr>
                     <tr><td><b>Producers:</b> Dentsu, Yomiuri Telecasting, Movic, Sony Music Entertainment, TOHO animation, Shueisha</td></tr>
                     <tr><td><b>Licensors:</b> None</td></tr>
