@@ -1,7 +1,7 @@
 'use client';
 
-import styles from './page.module.css';
-// import './style.css';
+// import styles from './page.module.css';
+import './style.css';
 
 import { AnimeCard, Header, Footer } from './components';
 
@@ -48,7 +48,8 @@ export default function Home() {
             .then((data) => {
                 const filteredData = data.data.filter(item => 
                     item.animeSeason.year === 2023 &&
-                    item.animeSeason.season === "SUMMER" &&
+                    (item.animeSeason.season === "SUMMER" || item.animeSeason.season === "SPRING") &&
+                    item.status !== "FINISHED" &&
                     !item.tags.includes("hentai") &&
                     !item.tags.includes("ecchi") &&
                     !item.tags.includes("chinese animation") &&

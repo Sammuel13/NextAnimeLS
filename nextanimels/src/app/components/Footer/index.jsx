@@ -1,6 +1,12 @@
 import Link from 'next/link'
+import { faFacebook, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function Footer() {
+
+    const face = <FontAwesomeIcon icon={faFacebook} />
+    const ytube = <FontAwesomeIcon icon={faYoutube} />
+    const insta = <FontAwesomeIcon icon={faInstagram} />
 
     return (
         <footer>
@@ -10,13 +16,13 @@ export default function Footer() {
             </p>
             <div className="social">
                 <Link href="https://www.facebook.com/" target="_blank">
-                    <i className="fa-brands fa-facebook" />
+                    {face}
                 </Link>
                 <Link href="https://www.youtube.com/" target="_blank">
-                    <i className="fa-brands fa-youtube" />
+                    {ytube}
                 </Link>
                 <Link href="https://www.instagram.com/" target="_blank">
-                    <i className="fa-brands fa-instagram" />
+                    {insta}
                 </Link>
             </div>
             <nav>

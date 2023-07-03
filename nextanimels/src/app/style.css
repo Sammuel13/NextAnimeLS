@@ -40,7 +40,7 @@ header {
   grid-area: header;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   padding: 15px 10%;
   margin-bottom: 32px;
   background-color: var(--white);
@@ -51,7 +51,7 @@ header {
 .logo {
   object-fit: cover;
   width: 200px;
-  height: 100px;
+  height: auto;
   overflow: hidden;
 }
 
@@ -143,8 +143,8 @@ a:link, a:visited {
 .poster {
   position: relative;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 4rem;
+  padding-left: 4rem;
 }
 
 footer {
@@ -177,20 +177,20 @@ footer nav {
 .poster {
   grid-area: main;
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	grid-template-areas:
-    ". .  title title ."
-		". image synopsis synopsis ."
-    ". estrela synopsis synopsis ."
-		". infos synopsis synopsis ."
-	  ". infos synopsis synopsis ."
-		". infos trailer trailer .";
+    "title title title"
+		"image synopsis synopsis"
+    "estrela synopsis synopsis"
+		"infos synopsis synopsis"
+	  "infos synopsis synopsis"
+		"infos trailer trailer";
   margin-bottom: 2rem;
 }
 
 #anime-title {
   grid-area: title;
-  margin: auto;
+  /* margin: auto; */
   writing-mode: horizontal-tb;
   text-align: center;
   padding: 5px 41px;

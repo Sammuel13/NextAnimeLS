@@ -8,8 +8,9 @@ import { Header, Footer } from '../components';
 export default function Form() {
 
     return (
+        <>
+        <Header />
         <main className={styles.main}>
-            <Header />
             <main className="corpo">
                 <form className>
                     <div className="formulario align-items-center highlight-toolbar ps-3 pe-2 py-1">
@@ -53,5 +54,6 @@ export default function Form() {
             </main>
             <Footer />
         </main>
+        </>
     );
 }
