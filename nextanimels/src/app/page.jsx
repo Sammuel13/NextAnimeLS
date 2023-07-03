@@ -8,33 +8,34 @@ import { AnimeCard, Header, Footer } from './components';
 import { useState, useEffect } from "react";
 
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Main from './pages/index'
 import Anime from './pages/Anime';
 import Formulario from './pages/Formulario';
-import AnimePage from './components/AnimePage/index';
 
+// import ReactDOM from 'react-dom/client';
+// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// import AnimePage from './components/AnimePage/index';
 
-const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Main />,
-        children: [
-            {
-            path: 'Formulario',
-            element: <Formulario />
-            },
-            {
-            path: 'AnimePage',
-            element: <AnimePage />
-            }
-        ]
-    }
-]);
+// const router = createBrowserRouter([
+//     {
+//         path: '/',
+//         element: <Main />,
+//         children: [
+//             {
+//             path: 'Formulario',
+//             element: <Formulario />
+//             },
+//             {
+//             path: 'AnimePage',
+//             element: <AnimePage />
+//             }
+//         ]
+//     }
+// ]);
 
 export default function Home() {
 
