@@ -1,69 +1,43 @@
-'use client';
+"use client";
 
-// import styles from './page.module.css';
-import './style.css';
-
-import { AnimeCard, Header, Footer } from './components';
+import { AnimeCard } from "@/components";
 
 import { useState, useEffect } from "react";
 
-import React from 'react';
-
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import Main from './pages/index'
-import Anime from './pages/Anime';
-import Formulario from './pages/Formulario';
-
-// import ReactDOM from 'react-dom/client';
-// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-// import AnimePage from './components/AnimePage/index';
-
-// const router = createBrowserRouter([
-//     {
-//         path: '/',
-//         element: <Main />,
-//         children: [
-//             {
-//             path: 'Formulario',
-//             element: <Formulario />
-//             },
-//             {
-//             path: 'AnimePage',
-//             element: <AnimePage />
-//             }
-//         ]
-//     }
-// ]);
+import React from "react";
 
 export default function Home() {
+    const [animeData, setAnimes] = useState([]);
 
-    const [animes, setAnimes] = useState([]);
     const loadData = async () => {
-        const animesDb =
-            "https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database.json";
-        
-        fetch(animesDb)
-            .then((res) => res.json())
-            .then((data) => {
-                const filteredData = data.data.filter(item => 
-                    item.animeSeason.year === 2023 &&
-                    (item.animeSeason.season === "SUMMER" || item.animeSeason.season === "SPRING") &&
-                    item.status !== "FINISHED" &&
-                    !item.tags.includes("hentai") &&
-                    !item.tags.includes("ecchi") &&
-                    !item.tags.includes("chinese animation") &&
-                    !item.tags.includes("korean animation") &&
-                    !item.tags.includes("anime influenced") &&
-                    !item.tags.includes("cg-anime") &&
-                    item.type !== "ONA"
+        let currentPage = 1;
+        const allItems = [];
+        const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+        while (true) {
+
+            try {
+                const response = await fetch(
+                    `https://api.jikan.moe/v4/anime?sfw&start_date=2023-04-01&page=${currentPage}`
                 );
-                setAnimes(filteredData);
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+                const data = await response.json();
+                const items = data.data;
+                allItems.push(...items);
+                if (data.pagination.has_next_page) {
+                    currentPage++;
+                    await delay(400);
+                } else {
+                    break;
+                }
+            } catch (error) {
+                await delay(1000);
+            }
+            
+
+        }
+
+        allItems.sort((b, a) => b.popularity - a.popularity);
+        setAnimes(allItems);
     };
 
     useEffect(() => {
@@ -71,12 +45,18 @@ export default function Home() {
     }, []);
 
     return (
-        <BrowserRouter>
-            <Routes>
-            <Route exact path="/" element={<Main animeData={animes} />} />
-            <Route path="/Formulario" element={<Formulario />} />
-            <Route path="/Anime/:title" element={<Anime animeData={animes} />} />
-            </Routes>
-        </BrowserRouter>
+        <>
+            <main>
+                {animeData.map((anime) => (
+                    <AnimeCard
+                        key={anime.mal_id}
+                        title={anime.title}
+                        status={anime.status}
+                        image={anime.images.webp.image_url}
+                        mal_id={anime.mal_id}
+                    />
+                ))}
+            </main>
+        </>
     );
 }
